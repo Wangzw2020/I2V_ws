@@ -1,0 +1,14 @@
+<!-- -->
+
+<launch>
+    <node name = "road_to_global" pkg = "road_to_global" type = "road_to_global" output = "screen">
+        <param name = "sub_object_str" type="string" value = "/objects"/>
+        <param name = "sub_obstacle_str" type="string" value = "/obstacles"/>
+        <param name = "pub_object_str" type="string" value = "/objects_global"/>
+        <param name = "pub_obstacle_str" type="string" value = "/obstacles_global"/>      
+        <param name = "position_x" type="double" value = "671194.7"/>
+        <param name = "position_y" type="double" value = "3529478"/>
+        <param name = "theta" type="double" value = "-4.6"/>
+    </node>
+</launch>
+
