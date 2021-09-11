@@ -23,7 +23,8 @@ private:
 	std::string pub_object_str;
 	std::string pub_obstacle_str;
 	std::string sub_odom_str;
-
+	std::string frame_id;
+	
 	double vehicle_x = 0;
 	double vehicle_y = 0;
 	double vehicle_yaw = 0;
@@ -67,6 +68,7 @@ void object_I2V::init_para() {
 	ros::param::get("~pub_object_str", pub_object_str);
 	ros::param::get("~pub_obstacle_str", pub_obstacle_str);
 	ros::param::get("~sub_odom_str", sub_odom_str);
+	ros::param::get("~frame_id", frame_id);
 	ros::param::get("~show_myself", show_myself);
 }
 
@@ -84,6 +86,7 @@ void object_I2V::callback_object(visualization_msgs::MarkerArray t) {
 	double tmp_x, tmp_y, tmp_theta;
 	//将tmp_t中的大地坐标转换为车辆坐标系坐标
 	for (int i = 0; i < tmp_t.markers.size(); i++) {
+		tmp_t.markers[i].header.frame_id = frame_id;
 		tmp_x = tmp_t.markers[i].pose.position.x - vehicle_x;
 		tmp_y = tmp_t.markers[i].pose.position.y - vehicle_y;
 		tmp_theta = 2 * asin(tmp_t.markers[i].pose.orientation.z);
@@ -92,7 +95,6 @@ void object_I2V::callback_object(visualization_msgs::MarkerArray t) {
 		tmp_t.markers[i].pose.orientation.z = sin(0.5*(tmp_theta - vehicle_yaw));
 		tmp_t.markers[i].pose.orientation.w = cos(0.5*(tmp_theta - vehicle_yaw));
 	}
-	std::cout << "global2vehcile over!" << std::endl;
 	//将自己从障碍物中删去
 	if (show_myself == false) {
 		for (int i = 0; i < tmp_t.markers.size(); i++) {
@@ -122,7 +124,6 @@ void object_I2V::callback_obstacle(perception_msgs::ObstacleArray t) {
 		tmp_t.obstacles[i].pose.orientation.z = sin(0.5*(tmp_theta - vehicle_yaw));
 		tmp_t.obstacles[i].pose.orientation.w = cos(0.5*(tmp_theta - vehicle_yaw));
 	}
-	std::cout << "global2vehcile over!" << std::endl;
 	//将自己从障碍物中删去
 	if (show_myself == false) {
 		for (int i = 0; i < tmp_t.obstacles.size(); i++) {

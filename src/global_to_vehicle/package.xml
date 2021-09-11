@@ -51,14 +51,10 @@
   <build_depend>roscpp</build_depend>  
   <run_depend>tf</run_depend>
   <build_depend>tf</build_depend>
-  <run_depend>fake_gps_msgs</run_depend>
-  <build_depend>fake_gps_msgs</build_depend>
   <run_depend>sensor_msgs</run_depend>
   <build_depend>sensor_msgs</build_depend> 
   <run_depend>nav_msgs</run_depend>
   <build_depend>nav_msgs</build_depend>
-  <run_depend>obu_msgs</run_depend>
-  <build_depend>obu_msgs</build_depend>
   <run_depend>perception_msgs</run_depend>
   <build_depend>perception_msgs</build_depend>
 

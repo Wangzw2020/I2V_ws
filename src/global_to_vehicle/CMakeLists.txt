@@ -7,11 +7,7 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rospy
   std_msgs
-
-  obu_msgs
   perception_msgs
-
-
   #GPS
   serial
   roslib
@@ -20,8 +16,6 @@ find_package(catkin REQUIRED COMPONENTS
   tf
   nav_msgs
   sensor_msgs
-  geographic_msgs
-  geodesy
 )
 
 

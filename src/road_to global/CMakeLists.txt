@@ -15,8 +15,6 @@ find_package(catkin REQUIRED COMPONENTS
   roscpp
   rosconsole
   tf
-  geographic_msgs
-  geodesy
 )
 
 
